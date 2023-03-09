@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+      body {
+        background-image: url("https://www.highreshdwallpapers.com/wp-content/uploads/2012/08/Luxury-Car-Wallpaper.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      h1 {
+        margin-left: 42%;
+        font-size: 70px;
+        color: #4fbabb;
+      }
+      img {
+        border-radius: 20px;
+      }
+
+      #box {
+        width: 50%;
+        height: 470px;
+        margin: auto;
+      }
+      #msg {
+        margin-left: 25%;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        /* font-size: 20px; */
+        display: none;
+        /* padding-top: 20px; */
+      }
+      #button {
+        margin-left: 190px;
+        margin-top: 20px;
+        padding: 15px 120px;
+        background-color: #4fbabb;
+        color: white;
+        border: 0px;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 10px;
+      }
+      #button:hover {
+        background: #428385;
+      }
+      .same {
+        width: 450px;
+        height: 40px;
+        margin-left: 100px;
+        margin-top: 30px;
+        font-size: 20px;
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+        border-bottom-style: groove;
+      }
+      .same:focus {
+        outline: none;
+      }
+      #ask {
+        margin-left: 24%;
+        font-size: 18px;
+      }
+      #box1 {
+        width: 100%;
+        height: 40px;
+        display: flex;
+        margin-top: 0px;
+      }
+      #signup_link {
+        margin-left: 20px;
+        color: rgb(255, 255, 255);
+        font-weight: bold;
+
+        font-size: 20px;
+      }
+      img {
+        width: 300px;
+        height: 55px;
+        margin-left: 25%;
+        margin-top: 2%;
+      }
+      #redirect {
+        text-decoration: none;
+      }
+      .btn {
+        width: 400px;
+        padding: 10px;
+        margin: auto;
+        background-color: red;
+        margin-left: 125px;
+        margin-top: 10px;
+        border: none;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+      }
+      #btn {
+        background-color: rgb(43, 43, 175);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="sin">
+      <div id="heading"><h1>Login</h1></div>
+      <div id="box">
+        <form action="">
+          <input
+            id="email"
+            class="same"
+            type="email"
+            placeholder="Enter your Email"
+            required
+          />
+          <br />
+          <input
+            id="password"
+            class="same"
+            type="password"
+            placeholder="Password"
+            required
+          />
+          <br />
+          <p id="msg">Send a new password to my email id</p>
+          <button id="button">Login</button>
+        </form>
+        <div id="box1">
+          <p id="ask">Don't have an account yet?</p>
+
+          <a id="redirect" href="signup.html"
+            ><p id="signup_link">Sign Up</p></a
+          >
+          <hr />
+        </div>
+        <!-- <img src="https://www.revv.co.in/imgs/google-login.png" alt="" /><br />
+      <img src="https://www.revv.co.in/imgs/facebook-icon.png" alt="" /> -->
+        <button class="btn">Google</button
+        ><button class="btn" id="btn">Facebook</button>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  document.getElementById("button").addEventListener("click", login);
+
+  function login(event) {
+    event.preventDefault();
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var registered_user = JSON.parse(localStorage.getItem("userdata"));
+    var login_success = false;
+    for (var i = 0; i < registered_user.length; i++) {
+      if (
+        registered_user[i].Email == email &&
+        registered_user[i].Password == password
+      ) {
+        login_success = true;
+        break;
+      }
+    }
+    if (login_success) show();
+    else {
+      alert("Invalid credentials");
+    }
+  }
+  function show() {
+    alert("Login Successful");
+    window.location.href = "index.html";
+  }
+</script>
